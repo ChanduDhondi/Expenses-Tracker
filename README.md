@@ -5,7 +5,7 @@
 - Managed database interactions through object relational mapping(ORM) system, and performed some queryset api operations to get the data from database.
 - Created Tracker and Profile models to handle the data, manages user inputs, validations, data submission through forms.
 - Used inbuilt post_save signal and receiver to create the profile with default image when the new user is created.
-- Implemented generics views to create, update and delete the data.
+- Implemented generics class based views to create, update and delete the data.
 - Added Pagination to the view transactions template.
 - Intergrated chartjs and created line graph to showcase Income and Expenses.
 - Added filter bar in the view transaction template to filter data accordingly.
