@@ -1,0 +1,123 @@
+*{
+    margin: 0;
+    border: border-box;
+}
+
+header{
+    position: sticky;
+    top: 0;
+
+}
+
+.navbar{
+    height: 7vh;
+    display: flex;
+    background-color: #3498db;
+    color: white;
+    align-items: center;
+}
+
+.navbar a{
+    color: white;
+    text-decoration: none;
+    padding: 0.7rem 0.7rem 0.7rem 0.7rem;
+    font-size: 1.2rem;
+}
+
+.navbar-right{
+    display: flex;
+}
+
+
+/* Sidebar */
+.sidebar{
+    width: 18vw;
+    height: 100vh;
+    background-color: #3498db;
+    color: white;
+    font-size: 1rem;
+    font-weight: 0.7rem;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+
+}
+.sidebar a{
+    text-decoration: none;
+    color: white;
+    margin: 1rem 1rem 1rem 1rem;
+}
+
+.sidebar-dashboard{
+    padding: 1rem 1rem 1rem 1rem;
+    margin: 1rem 1rem 1rem 1rem;
+}
+
+/* main */
+.main{
+    margin-left: 18vw;
+}
+
+/* Home template */ 
+.home{
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.home div{
+    margin: 0;
+    padding: 2rem 0 0 2rem;
+    width: 550px;
+    height: 300px;
+}
+
+/* form group */ 
+.form-group{
+    padding: 1rem 1rem 1rem 1rem;
+}
+
+/**/
+.view-navbar{
+    background-color: rgb(174, 244, 244);
+    height: 7vh;
+    width: 100%;
+    display: flex;
+}
+
+.view-navbar div{
+    margin: 1rem 0 0 1rem;
+}
+
+.view-table{
+    margin: 0 0 0 1rem;
+    padding: 1rem 1rem 1rem 1rem;
+}
+
+/* view transactions page footer*/
+footer{
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+}
+
+.paginator{
+    bottom: 0;
+    background-color: #04385a;
+    color: white;
+    width: 100%;
+    height: 4vh;
+}
+
+.paginator a{
+    text-decoration: none;
+    color: white;
+    padding: auto;
+}
+
+.paginator p{
+    text-align: center;
+}
+
+
+

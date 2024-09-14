@@ -1,0 +1,70 @@
+{% extends 'main/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="view-navbar">
+            <div style="margin: 1.2rem 0 0 1rem; font-size: 1.2rem;display: flex;">
+                <i class="fa-solid fa-filter"></i>
+            </div>
+            <div class="view-navbar-sort">
+                <label for="sort">Sort By</label>
+                {{ form.sort_by }}
+            </div>
+            <div class="view-navbar-from-date">
+                <label for="from">From Date</label>
+                {{ form.from_date }}
+            </div>
+            <div class="view-navbar-to-date me-auto">
+                <label for="to">To Date</label>
+                {{ form.to_date }}
+            </div>
+            <input type="submit" name="Add Filter" style="height: 2rem; margin: 1rem 1rem 0 0;">
+        </div>
+    </form>
+    {% if data %}
+        <div class="view-table">
+            <legend class="mb-4 mt-4">All Transactions</legend>
+            <table class="table table-striped ">
+                <thead>
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for data in data %}
+                    <tr>
+                        <td>{{ data.date }}</td>
+                        <td>{{ data.category }}</td>
+                        <td>{{ data.amount }}</td>
+                        <td>{{ data.description }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <footer>
+            <div class="paginator">
+                <p>
+                {% if data.has_previous  %}
+                <a href="?page=1" style="margin-right: 1rem;">First</a>
+                <a href="?page={{ data.previous_page_number }}" style="margin-right: 1rem;">Previous</a>
+                {% endif %}
+
+                Page {{ data.number }} of {{ data.paginator.num_pages }}.
+
+                {% if data.has_next %}
+                <a href="?page={{ data.next_page_number }}" style="margin-left: 1rem;">Next</a>
+                <a href="?page={{ data.paginator.num_pages }}" style="margin-left: 1rem;">Last</a>
+                {% endif %}
+                </p>
+            </div>
+        </footer>
+    {% else %}
+        <h4 style="text-align: center; margin-top: 3rem; color: rgb(238, 111, 111);">No Data found in between entered dates</h4>
+    {% endif %}
+{% endblock %}

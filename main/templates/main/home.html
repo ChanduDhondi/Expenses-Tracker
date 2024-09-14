@@ -1,0 +1,77 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+      <div class="home">
+        <div class="home-canvas">
+          <canvas id="myChart"></canvas>
+        </div>
+        <div class="home-table">
+          <legend class="mb-4 mt-4">Recent Transactions</legend>
+          <table class="table table-striped ">
+              <thead>
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for data in data %}
+                    <tr>
+                        <td>{{ data.date }}</td>
+                        <td>{{ data.category }}</td>
+                        <td>{{ data.amount }}</td>
+                        <td>{{ data.description }}</td>
+                    </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
+
+        <div class="home-income" style="border: 1px solid #3498db; border-radius: 10px; width: 300px; height: 100px; margin: 50px 50px 50px 50px; padding: 10px 0 0 10px;">
+          <p>Total Income</p>
+          <h4><i class="fa fa-inr" aria-hidden="true"></i> {{ total_income }}</h4>
+        </div>
+        <div class="home-expense" style="border: 1px solid #3498db; border-radius: 10px; width: 300px; height: 100px; margin: 50px 50px 50px 50px; padding: 10px 0 0 10px;">
+          <p>Total Expenses</p>
+          <h4><i class="fa fa-inr" aria-hidden="true"></i> {{ total_expense }}</h4>
+        </div>
+    </div>
+
+    <!-- chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+      const ctx = document.getElementById('myChart');
+    
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          datasets: [{
+            label: 'Income',
+            data: {{chart_income|safe}},
+            borderWidth: 1,
+            fill: false,
+            borderColor: 'rgb(50, 255, 10)',
+            tension: 0.1
+          },
+          {
+            label: 'Expense',
+            data: {{chart_expense|safe}},
+            borderWidth: 1,
+            fill: false,
+            borderColor: 'rgb(255, 10, 10)',
+            tension: 0.1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    </script>  
+{% endblock %}
