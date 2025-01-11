@@ -75,7 +75,7 @@ def viewTransactions(request):
     return render(request, 'main/view_transactions.html', {'title':'All Transactions', 'form': form, 'data':page_obj})
 
 @login_required
-def profile(requset):
+def profile(request):
     if requset.method == 'POST':
         u_form = UserUpdateForm(requset.POST, instance=requset.user)
         p_form = ProfileUpdateFrom(requset.POST, requset.FILES, instance=requset.user.profile)
